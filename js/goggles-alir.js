@@ -18,11 +18,11 @@ function testcall() {
 
 function testcall2() {
 
-    var userId =  "4";
-    var donationDate = "2016-05-18T16:00:00Z";
-    var expirationDate = "2016-05-18T16:00:00Z";
-    var userSteamId = "76561197971046908";
-    var donationAmount = "5";
+    var userId =  77;
+    var donationDate = "2016-05-18";
+    var expirationDate = "2016-05-18";
+    var userSteamId = 76561197971046908;
+    var donationAmount = 5;
     var adminNotes = "ff";
 
 
@@ -60,11 +60,11 @@ function testcall3(id) {
 
 function testcall4(id) {
 
-    var userId =  "77";
-    var donationDate = "2016-05-18T16:00:00Z";
-    var expirationDate = "2016-05-18T16:00:00Z";
-    var userSteamId = "76561197971046908";
-    var donationAmount = "5";
+    var userId =  77;
+    var donationDate = "2016-05-18";
+    var expirationDate = "2016-05-18";
+    var userSteamId = 76561197971046908;
+    var donationAmount = 5;
     var adminNotes = "ff";
 
     console.log(id);
@@ -103,3 +103,4 @@ function testcall5(id) {
 
 }
 
+new Date('2016-05-18T16:00:00Z');

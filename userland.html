@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>MyALIR</title>
@@ -13,28 +13,91 @@
     <!-- Page favicon -->
     <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/gif"/>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Other CSS -->
     <link href="css/alir-default.css" rel="stylesheet"/>
+    <link href="css/goggles-additions.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 <body>
-<p id="date"></p>
-<button onclick="testcall();">GET</button>
-<button onclick="testcall2();">POST</button>
-<button onclick="testcall3('5a90290fea84d21a30b1d902');">DELETE</button>
-<button onclick="testcall4('5a902dfaca93992b11fca24d');">PUT</button>
-<button onclick="testcall5('76561197960737520');">GET BY ID</button>
+<div id="loadingdiv" hidden>
+    <div class="loading" id="loading">
+        <span class="load">M</span>
+        <span class="load">y</span>
+        <span class="load">.</span>
+        <span class="load">A</span>
+        <span class="load">L</span>
+        <span class="load">I</span>
+        <span class="load">R</span>
+    </div>
+</div>
+<div class="container" id="maindiv">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
+           title="Torna alla pagina principale" onclick="goToHome()"><i class="fas fa-user"></i> <span
+                style="color: #007BCC">My</span><b>ALIR</b>
+            <small style="color:#c83e42;">Admin</small>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="cursor:pointer;" data-toggle="modal" data-target="#helpModal"
+                       title="Informazioni su ALIRDB"> <i class="fas fa-info-circle "></i> Aiuto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.alir.eu/" data-toggle="tooltip" data-placement="top"
+                       title="Torna"> <i class="fas fa-external-link-alt"></i> Torna</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main">
+        <section id="viewUserDetails">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm padbot">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Ciao <span>userName</span>,</h4>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">SteamID: <span class="pull-right"><span id="steamid">76561197960737520</span></span></li>
+                                <li class="list-group-item">donationAmount: <span class="pull-right"><span id="donationAmount">50</span></span></li>
+                                <li class="list-group-item">donationDate: <span class="pull-right"><span id="donationDate">28/02/2018</span></span></li>
+                                <li class="list-group-item">expirationDate: <span class="pull-right"><span id="expirationDate">05/03/2018</span></span></li>
+                                <li class="list-group-item">Alias: <span class="pull-right"><span id="expirationTime">tra 7 giorni</span></span></li>
+                                <li class="list-group-item">Alias: <span class="pull-right"><span id="alias">Ugo</span></span></li>
+                                <li class="list-group-item">Id utente: <span class="pull-right"><span id="userId">5</span></span> <i class="fa fa-external-link-alt" title="Link al profilo"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <p id="date"></p>
+        <button onclick="testcall();">GET</button>
+        <button onclick="testcall2();">POST</button>
+        <button onclick="testcall3('5a90290fea84d21a30b1d902');">DELETE</button>
+        <button onclick="testcall4('5a902dfaca93992b11fca24d');">PUT</button>
+        <button onclick="testcall5('76561197960737520');">GET BY ID</button>
+    </main>
+</div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script src="js/moment.js"></script>
 <script src="js/goggles-alir.js"></script>

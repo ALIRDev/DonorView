@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>MyALIR</title>
@@ -13,28 +13,158 @@
     <!-- Page favicon -->
     <link rel="icon" href="https://i.imgur.com/SSdiFqD.png" type="image/gif"/>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Other CSS -->
-    <link href="css/goggles-alir.css" rel="stylesheet"/>
+    <link href="css/alir-default.css" rel="stylesheet"/>
+    <link href="css/goggles-additions.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 <body>
-<p id="date"></p>
-<button onclick="testcall();">GET</button>
-<button onclick="testcall2();">POST</button>
-<button onclick="testcall3('5a90290fea84d21a30b1d902');">DELETE</button>
-<button onclick="testcall4('5a902dfaca93992b11fca24d');">PUT</button>
-<button onclick="testcall5('76561197960737520');">GET BY ID</button>
+<div id="loadingdiv" hidden>
+    <div class="loading" id="loading">
+        <span class="load">M</span>
+        <span class="load">y</span>
+        <span class="load">.</span>
+        <span class="load">A</span>
+        <span class="load">L</span>
+        <span class="load">I</span>
+        <span class="load">R</span>
+    </div>
+</div>
+<div class="container" id="maindiv">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" style="font-size: 150%; cursor:pointer;" data-toggle="tooltip" data-placement="top"
+           title="Torna alla pagina principale" onclick="goToHome()"><i class="fas fa-user"></i> <span
+                style="color: #007BCC">My</span><b>ALIR</b>
+            <small style="color:#c83e42;">Admin</small>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="cursor:pointer;" data-toggle="modal" data-target="#helpModal"
+                       title="Informazioni su ALIRDB"> <i class="fas fa-info-circle "></i> Aiuto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.alir.eu/" data-toggle="tooltip" data-placement="top"
+                       title="Torna"> <i class="fas fa-external-link-alt"></i> Torna</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main">
+        <section id="viewUserDetails">
+            <div class="container">
+                <nav class="nav nav-pills nav-fill" style="padding-bottom: 2%;">
+                    <a class="nav-item nav-link disabled"><span id="userNameDatas">UserName</span></a>
+                    <a class="nav-item nav-link active" href="#">Resoconto</a>
+                    <a class="nav-item nav-link" href="#">Steam</a>
+                    <a class="nav-item nav-link" href="#">Forum</a>
+                </nav>
+                <div class="row">
+                    <div class="col-sm padbot">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Dati utente</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Informazioni sull'utente</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">SteamId: <span class="pull-right"><span
+                                        id="steamid">76561197960737520</span></span></li>
+                                <li class="list-group-item">Alias: <span class="pull-right"><span
+                                        id="alias">Ugo</span></span></li>
+                                <li class="list-group-item" id="adminNoteLine">Nota amministratore: <span data-toggle="modal" data-target="#adminNote">Vedi</span></li>
+                                <li class="list-group-item">Id utente: <span class="pull-right"><span
+                                        id="userId">5</span></span> <i class="fa fa-external-link-alt"
+                                                                       title="Link al profilo"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm padbot">
+                        <div id="donorUsers">
+                            <p hidden id="idMongoUtente"></p>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Dettagli donatore</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">Tutti i dettagli sul donatore</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Importo donato: <span id="donationAmount"
+                                                                                      class="pull-right">50</span><span>€</span>
+                                    </li>
+                                    <li class="list-group-item">Donazione effettuata il: <span class="pull-right"><span
+                                            id="donationDate">28/02/2018</span></span>
+                                    </li>
+                                    <li class="list-group-item">Scadenza rinnovo il: <span class="pull-right"><span
+                                            id="expirationDate">05/03/2018</span></span>
+                                    </li>
+                                    <li class="list-group-item">Rimozione tra: <span class="pull-right"><span
+                                            id="expiredAfter">tra 7 giorni</span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="notDonorUser" hidden>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Dettagli donatore</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">Tutti i dettagli sul donatore</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Utente</li>
+                                    <li class="list-group-item">Molto</li>
+                                    <li class="list-group-item">Molto</li>
+                                    <li class="list-group-item">Tirchio</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item" style="padding-right: 1%">
+                        <a class="btn btn-outline-primary" href="#">Modifica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger" href="#">Elimina</a>
+                    </li>
+                </ul>
+                <!--<div class="row">
+                    <div class="col-sm padbot">
+                        <div class="card" style="padding: 2%">
+                            Percentuale raggiungimento investitore:
+                            <div class="progress" style="height: 20px;">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                     aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </section>
+
+        <p id="date"></p>
+        <button onclick="testcall();">GET</button>
+        <button onclick="testcall2();">POST</button>
+        <button onclick="testcall3('5a90290fea84d21a30b1d902');">DELETE</button>
+        <button onclick="testcall4('5a902dfaca93992b11fca24d');">PUT</button>
+        <button onclick="testcall5('76561197960737520');">GET BY ID</button>
+    </main>
+</div>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script defer src="https://alir.eu/etero/js/fontawesome5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script src="js/moment.js"></script>
 <script src="js/goggles-alir.js"></script>

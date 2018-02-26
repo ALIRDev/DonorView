@@ -84,7 +84,7 @@ function checkUserAuth() {
             }
         }).done(function (data) {
             Cookies.set('myalir-uulog', authLogin, {expires: 20});
-            //window.location = "http://localhost:63342/ALIRDonorGoggles/index.html?_ijt=iiq15vbsmf83t9ce140agcf4j7";
+            window.location = "/inded.html";
         });
 
     }

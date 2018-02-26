@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-
 html,
 body {
     height: 100% !important;
@@ -18,8 +16,8 @@ body {
     color: #ffffff;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
 }
 
 .tip {
@@ -58,4 +56,8 @@ body {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 0 !important;
 }

@@ -51,17 +51,14 @@ function checkUserAuth() {
         $('#alertErrorLogin').removeAttr('hidden');
         $('#errorStrong').html(r_text[i]);
         $('#errorSpan').html("Username e password sono obbligatori!");
-        console.log("Username error");
     } else if (!username) {
         $('#alertErrorLogin').removeAttr('hidden');
         $('#errorStrong').html(r_text[i]);
         $('#errorSpan').html("Hai dimenticato l'username!");
-        console.log("Password error")
     } else if (!password) {
         $('#alertErrorLogin').removeAttr('hidden');
         $('#errorStrong').html(r_text[i]);
         $('#errorSpan').html("Non vedo la password!");
-        console.log("Password error")
     } else {
 
         var authLogin = btoa(username + ":" + password);

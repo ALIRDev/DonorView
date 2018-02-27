@@ -61,3 +61,8 @@ body {
 .form-signin input[type="password"] {
     margin-bottom: 0 !important;
 }
+
+.linked:hover{
+    color: #3D6594;
+    text-decoration: underline;
+}

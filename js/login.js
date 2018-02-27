@@ -21,7 +21,7 @@ function checkCookies() {
                 }
             }
         }).done(function () {
-            window.location = "http://localhost:63342/ALIRDonorGoggles/index.html?_ijt=iiq15vbsmf83t9ce140agcf4j7";
+            //window.location = "http://localhost:63342/index.html";
         });
 
     }
@@ -30,20 +30,26 @@ function checkCookies() {
 
 checkCookies();
 
-function checkUserAuth() {
+function accessWithSteam() {
+    $('#loginWithBasic').attr('hidden', true);
+    $('#loginWithSteam').removeAttr('hidden')
+}
 
+function accessWithPassword() {
+    $('#loginWithSteam').attr('hidden', true);
+    $('#loginWithBasic').removeAttr('hidden')
+}
+
+function checkUserSteam() {
+    
+}
+
+function checkUserAuth() {
 
     var username = $('#userName').val();
     var password = $('#userPass').val();
 
-    var r_text = [];
-    r_text[0] = "Noooooooo!";
-    r_text[1] = "Ma!";
-    r_text[2] = "Non capisco!";
-    r_text[3] = "Ma che fai!";
-    r_text[4] = "Perchè?";
-    r_text[5] = "Accidenti!";
-    r_text[6] = "Ritenta XD";
+    var r_text = ["Noooooooo!","Ma!","Non capisco!","Ma che fai!","Perchè?","Accidenti!","Ritenta XD"];
 
     var i = Math.floor(7 * Math.random());
 
@@ -81,7 +87,7 @@ function checkUserAuth() {
             }
         }).done(function (data) {
             Cookies.set('myalir-uulog', authLogin, {expires: 20});
-            window.location = "/inded.html";
+            window.location = "../pages/index.html";
         });
 
     }

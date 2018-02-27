@@ -21,7 +21,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 <body class="text-center">
-<form class="form-signin">
+<form class="form-signin" id="loginWithSteam">
+    <img class="mb-4" src="image/boy.svg" alt="" width="72" height="72">
+    <!--<h1 class="h3 mb-3 font-weight-normal">Accesso <span>My<b></b></span></h1>-->
+    <div class="alert alert-danger" role="alert" id="notAllowedData2" hidden>
+        <h4 class="alert-heading">MA!</h4>
+        <p class="mb-0">I tuoi dati sono stati respinti!</p>
+    </div>
+    <div class="alert alert-warning" role="alert" id="alertErrorLogin2" hidden>
+        <h4 class="alert-heading" id="errorStrong2"></h4>
+        <p class="mb-0" id="errorSpan2"></p>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon12"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="steamId" aria-describedby="basic-addon12">
+    </div>
+    <button class="btn btn-lg btn-outline-light btn-block" type="button" onclick="checkUserSteam();">PROCEDI</button>
+    <br>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="">Cos'è lo SteamID?</a></li>
+        <li class="list-inline-item" title="Accedi con i dati" style="color: #007BCC; cursor: pointer"><a onclick="accessWithPassword();">Accesso con password</a></li>
+    </ul>
+    <p class="mt-5 mb-3 text-muted"><i class="far fa-copyright"></i> 2016-2018</p>
+</form>
+<form class="form-signin" id="loginWithBasic" hidden>
     <img class="mb-4" src="image/boy.svg" alt="" width="72" height="72">
     <!--<h1 class="h3 mb-3 font-weight-normal">Accesso <span>My<b></b></span></h1>-->
     <div class="alert alert-danger" role="alert" id="notAllowedData" hidden>
@@ -46,7 +71,9 @@
     </div>
     <button class="btn btn-lg btn-outline-light btn-block" type="button" onclick="checkUserAuth();">ACCEDI</button>
     <br>
-    <a href="">Vorrei registrarmi come faccio?</a>
+    <ul class="list-inline">
+        <li class="list-inline-item" title="Accedi con steam" style="color: #007BCC; cursor: pointer"><a onclick="accessWithSteam();">Accesso con steam</a></li>
+    </ul>
     <p class="mt-5 mb-3 text-muted"><i class="far fa-copyright"></i> 2016-2018</p>
 </form>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

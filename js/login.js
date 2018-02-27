@@ -27,27 +27,9 @@ function checkCookies() {
     }
 
 }
-
-// See https://github.com/daneden/animate.css/issues/644
-var animationEnd = (function(el) {
-    var animations = {
-        animation: 'animationend',
-        OAnimation: 'oAnimationEnd',
-        MozAnimation: 'mozAnimationEnd',
-        WebkitAnimation: 'webkitAnimationEnd'
-    };
-
-    for (var t in animations) {
-        if (el.style[t] !== undefined) {
-            return animations[t];
-        }
-    }
-});
-
 checkCookies();
 
 function accessWithSteam() {
-    $('#loginWithSteam').one(animationEnd, $('#loginWithSteam').animateCss('bounceOutLeft'));
     $('#loginWithBasic').attr('hidden', true);
     $('#alertErrorLogin').attr('hidden', true);
     $('#alertErrorLogin2').attr('hidden', true);

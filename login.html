@@ -23,6 +23,7 @@
 <body class="text-center">
 <form class="form-signin animated bounceInDown" id="loginWithSteam">
     <img class="mb-4" src="image/boy.svg" alt="" width="72" height="72">
+    <h4>Accesso con SteamID</h4>
     <!--<h1 class="h3 mb-3 font-weight-normal">Accesso <span>My<b></b></span></h1>-->
     <div class="alert alert-danger" role="alert" id="notAllowedData2" hidden>
         <h4 class="alert-heading">MA!</h4>
@@ -34,9 +35,9 @@
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon12"><i class="fas fa-user"></i></span>
+            <span class="input-group-text" id="basic-addon12"><i class="fab fa-steam"></i></span>
         </div>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="steamId" aria-describedby="basic-addon12">
+        <input type="text" class="form-control" placeholder="SteamID" aria-label="SteamID" id="steamId" aria-describedby="basic-addon12">
     </div>
     <button class="btn btn-lg btn-outline-light btn-block" type="button" onclick="checkUserSteam();">PROCEDI</button>
     <br>
@@ -47,7 +48,8 @@
     <p class="mt-5 mb-3 text-muted"><i class="far fa-copyright"></i> 2016-2018</p>
 </form>
 <form class="form-signin animated bounceInDown" id="loginWithBasic" hidden>
-    <img class="mb-4" src="image/boy.svg" alt="" width="72" height="72">
+    <img class="mb-4" src="image/team.svg" alt="" width="72" height="72">
+    <h4>Accesso prioritario</h4>
     <!--<h1 class="h3 mb-3 font-weight-normal">Accesso <span>My<b></b></span></h1>-->
     <div class="alert alert-danger" role="alert" id="notAllowedData" hidden>
         <h4 class="alert-heading">MA!</h4>
